@@ -14,14 +14,14 @@
     <header>
       <h1 style="color: green">Sentiment.ly</h1>
       <h2 style="color: green">Twitter users analyzed, using the brains of</h2>
-      <img ng-src="./ibmwatson.jpg" width="300px" height="45px">
+      <img ng-src="./img/ibmwatson.jpg" width="300px" height="45px">
       <hr style="width: 40%"><br>
       <h2 style="font-style: italic; color: brown ">Analyze a Twitter handle</h2>
       <form ng-submit="searchRequest()"> <!-- calls factory function that makes POST req w/ input value (twitter handle)  -->
         <a style=font-weight: bold">@ &nbsp</a><input type="text" ng-model="searchRequestInput" placeholder="e.g., Journey4John" required style="height:30px; width: 300px;">
         <input type="Submit" style="color: brown"><br><br>
         <div ng-if="spinner">
-          <img ng-src="./spiffygif_46x46.gif">
+          <img ng-src="./img/spiffygif_46x46.gif">
         </div>
       </form>
 
@@ -34,7 +34,7 @@
         <input type="text" ng-model="sampleTweetInput" placeholder="e.g., Enter sample sentence text here" required style="height:30px; width: 300px; font-size:10pt;">
         <input type="Submit" style="color: green"><br><br>
         <div ng-if="spinner2">
-          <img ng-src="./spiffygif_46x46.gif">
+          <img ng-src="./img/spiffygif_46x46.gif">
         </div>
       </form>
 
@@ -76,7 +76,7 @@
       </div>
 
       <div ng-if="showTestDriveGif">
-        <img ng-src="./topgear.gif" style='width:100%; height: 120%; padding-top: 80px;'>
+        <img ng-src="./img/topgear.gif" style='width:100%; height: 120%; padding-top: 80px;'>
       </div>
     </section>
 
