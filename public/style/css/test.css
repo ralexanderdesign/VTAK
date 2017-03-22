@@ -1,6 +1,5 @@
 
 
-
 body {
     position: relative;
     overflow-x: hidden;
@@ -222,7 +221,7 @@ html { height: 100%;}
 .hamburger.is-closed .hamb-top,
 .hamburger.is-closed .hamb-middle,
 .hamburger.is-closed .hamb-bottom {
-  background-color: #fff;
+  background-color: #1a1a1a;
 }
 .hamburger.is-closed .hamb-top {
   top: 5px;
@@ -302,7 +301,7 @@ html { height: 100%;}
 
 
 .logo {
-  padding-top: 10px;
+  padding-top: 20px;
    text-align: center;
 }
 
@@ -311,13 +310,4 @@ html { height: 100%;}
 }
 .accountbtn {
   float: right;
-  background-color: white;
-}
-
-
-h1 {
-  font-family: 'Baloo', cursive;
-}
-.bot {
-  width: 125px;
 }
