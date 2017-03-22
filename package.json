@@ -16,7 +16,7 @@
     "sentiment",
     "tone"
   ],
-  "author": "Andrew Fechner, John Packel, Aamir Yousuf, Todd MacIntyre",
+  "author": "Cameron Dunne, Andrew Fechner, Danny Hendrix, Todd MacIntyre, John Packel, Rich Serdici, Aamir Yousuf ",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
@@ -25,7 +25,18 @@
     "express": "^4.15.2",
     "mongoose": "^4.9.0",
     "morgan": "^1.8.1",
+    "node-sass": "^4.5.1",
     "q": "^1.4.1",
     "watson-developer-cloud": "^2.25.1"
+  },
+  "devDependencies": {
+    "cz-conventional-changelog": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
