@@ -16,7 +16,7 @@
     "sentiment",
     "tone"
   ],
-  "author": "Cameron Dunne, Andrew Fechner, Danny Hendrix, Todd MacIntyre, John Packel, Rich Serdici, Aamir Yousuf ",
+  "author": "Andrew Fechner, John Packel, Aamir Yousuf, Todd MacIntyre",
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",

@@ -105,6 +105,7 @@ $scope.sampleRequest = function() {
             }
       })
       .then(function(data) {
+        $scope.savedInput = $scope.sampleTweetInput;
         $scope.spinner2 = false;
         $scope.bootup = false;
         $scope.showTestDriveGif = true;

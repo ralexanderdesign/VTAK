@@ -5,23 +5,35 @@ angular.module("myApp", [
   .config(function($stateProvider, $urlRouterProvider){
     $stateProvider
       .state('home', {
-        url: '/',
+        url: '',
         templateUrl: './templates/home.html',
-        controller: 'sentimentController'
+        controller: 'sentimentController',
+        data: {
+           bodyClass: 'home'
+       }
       })
       .state('tweet', {
         url: '/tweet',
         templateUrl: './templates/tweet.html',
-        controller: 'sentimentController'
+        controller: 'sentimentController',
+        data: {
+          bodyClass: 'default'
+        }
       })
       .state('user', {
         url: '/user',
         templateUrl: './templates/user.html',
-        controller: 'sentimentController'
+        controller: 'sentimentController',
+        data: {
+          bodyClass: 'default'
+        }
       })
       .state('archive', {
         url: '/archive',
         templateUrl: './templates/archive.html',
-        controller: 'sentimentController'
+        controller: 'sentimentController',
+        data: {
+          bodyClass: 'default'
+        }
       })
   })

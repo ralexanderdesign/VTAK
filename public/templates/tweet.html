@@ -1,62 +1,39 @@
-
-  <div ng-controller="sentimentController" class="centered">
-
+<div ng-controller="sentimentController" class="centered">
     <div>
-    <header>
-      <!-- <h1>Sentiment.ly</h1>
-      <h2>Twitter users analyzed, using the brains of</h2>
-      <img ng-src="./img/ibmwatson.jpg" width="300px" height="45px">
-      <hr><br> -->
-      <h2>Analyze a Twitter handle</h2>
-      <form ng-submit="searchRequest()"> <!-- calls factory function that makes POST req w/ input value (twitter handle)  -->
-        <a>@ &nbsp</a><input type="text" ng-model="searchRequestInput" placeholder="e.g., Journey4John" required style="height:30px; width: 300px;">
-        <input type="Submit" style="color: brown"><br><br>
-        <div ng-if="spinner">
-          <img ng-src="./img/spiffygif_46x46.gif">
-        </div>
-      </form>
-
-      <!-- Form for test Drive -->
-      <hr style="width: 20%"><br>
-      <h2 style="font-style: italic; color: brown ">Test drive a tweet</h2>
+      <h2>Test drive a tweet</h2>
       <form ng-submit="sampleRequest()">
         <!-- Test drive a tweet!&nbsp -->
-
-        <input type="text" ng-model="sampleTweetInput" placeholder="e.g., Enter sample sentence text here" required style="height:30px; width: 300px; font-size:10pt;">
-        <input type="Submit" style="color: green"><br><br>
+        <input type="text" ng-model="sampleTweetInput" placeholder="e.g., Enter sample sentence text here" required>
+        <input type="Submit">
         <div ng-if="spinner2">
           <img ng-src="./img/spiffygif_46x46.gif">
         </div>
       </form>
-
     </div>
-    <hr style="width: 20%">
-  </header>
     <div class="analysis">
     <div class="tooltip">
       <h2>Tweet Analysis</h2>
+      <div class="container">
+      </div>
       <span class="tooltiptext">IBM Watson's Tone Analyzer uses linguistic analysis to detect three types of tones in written text: emotions, social tendencies and writing style</span> </div>
       <div ng-if="bootup">
-          <br>
-          <br>
-          <br>
-          <br>
-          <h2 class="tonesB">Emotional tone: </h2><h3 class="tonesR">Joy, Fear, Sadness, Disgust, Anger</h3><br><br>
-          <h2 class="tonesB">Language tone: </h2><h3 class="tonesR">Analytical, Confidence, Tentativeness</h3><br><br>
+          <h2 class="tonesB">Emotional tone: </h2><h3 class="tonesR">Joy, Fear, Sadness, Disgust, Anger</h3>
+          <h2 class="tonesB">Language tone: </h2><h3 class="tonesR">Analytical, Confidence, Tentativeness</h3>
           <h2 class="tonesB">Social tone: </h2><h3 class="tonesR">Openness, Conscientiousness, Extraversion, Agreeableness, Emotional Range</h3>
       </div>
     </div>
 
-    <aside>
+    <div class="container">
+      {{ savedInput }}
          <div id="d3Display"></div>
-    </aside>
+    </div>
 
   <section>
       <div ng-if="showResults" class="ng-cloak">
         <div class = "userData"  id="profile">
           <br><br>
           <div>
-            <img ng-src="{{ userData.imageUrl }}" alt="Macaque in the trees" style='width:40%;' border="2" alt="Null">
+            <img ng-src="{{ userData.imageUrl }}" alt="Macaque in the trees" border="2" alt="Null">
         </div>
         <div>Name: {{ userData.name }}</div>
         <div>Handle: @{{ userData.handle }}</div>
@@ -65,9 +42,5 @@
         <div>Followers: {{userData.followers }}</div>
         </div>
       </div>
-
-      <!-- <div ng-if="showTestDriveGif">
-        <img ng-src="./img/topgear.gif" style='width:100%; height: 120%; padding-top: 80px;'>
-      </div> -->
     </section>
 </div>

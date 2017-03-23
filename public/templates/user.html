@@ -1,0 +1,42 @@
+<div ng-controller="sentimentController" class="centered">
+    <div>
+      <h2>Analyze a Twitter handle</h2>
+      <form ng-submit="searchRequest()"> <!-- calls factory function that makes POST req w/ input value (twitter handle)  -->
+        <a>@ &nbsp</a><input type="text" ng-model="searchRequestInput" placeholder="e.g., Journey4John" required>
+        <input type="Submit"><br><br>
+        <div ng-if="spinner">
+          <img ng-src="./img/spiffygif_46x46.gif">
+        </div>
+      </form>
+    </div>
+    <div class="analysis">
+    <div class="tooltip">
+      <h2>Tweet Analysis</h2>
+      <span class="tooltiptext">IBM Watson's Tone Analyzer uses linguistic analysis to detect three types of tones in written text: emotions, social tendencies and writing style</span> </div>
+      <div ng-if="bootup">
+          <h2 class="tonesB">Emotional tone: </h2><h3 class="tonesR">Joy, Fear, Sadness, Disgust, Anger</h3>
+          <h2 class="tonesB">Language tone: </h2><h3 class="tonesR">Analytical, Confidence, Tentativeness</h3>
+          <h2 class="tonesB">Social tone: </h2><h3 class="tonesR">Openness, Conscientiousness, Extraversion, Agreeableness, Emotional Range</h3>
+      </div>
+    </div>
+
+    <aside>
+         <div id="d3Display"></div>
+    </aside>
+
+  <section>
+      <div ng-if="showResults" class="ng-cloak">
+        <div class = "userData"  id="profile">
+          <br><br>
+          <div>
+            <img ng-src="{{ userData.imageUrl }}" alt="Macaque in the trees" border="2" alt="Null">
+        </div>
+        <div>Name: {{ userData.name }}</div>
+        <div>Handle: @{{ userData.handle }}</div>
+        <div>Location: {{ userData.location }}</div>
+        <div>Description: {{ userData.description }}</div>
+        <div>Followers: {{userData.followers }}</div>
+        </div>
+      </div>
+    </section>
+</div>
