@@ -1,0 +1,24 @@
+<div id="footer">
+  <div style="text-align: center"> <!-- add back ng-if="showResults"  style="text-align: center" -->
+    <br>
+      <hr style="width: 20%">
+    <h2>Saved Analyses</h2>
+    <h4 style="font-style: italic">
+      <a style="color: brown">Click on an item to view results</a>
+    </h4>
+    <h4>
+      <table align="center" border="3" width="400px" bgcolor="CEEDB6">
+        <tr>
+          <th></th>
+          <th class='tableheader'>Twitter handle</th>
+          <th class='tableheader'>Time of search</th>
+        </tr>
+        <tr ng-repeat="archive in archivesData" ng-click="getSaved(archive)" class="archivelist">
+          <td> <img ng-src="{{ archive.imageUrl }}" width="60px" height="60px"></td>
+          <td> {{ archive.handle }} </td>
+          <td> {{ archive.timestamp }} </td>
+        </tr>
+      </table>
+    </h4>
+  </div>
+</div>
