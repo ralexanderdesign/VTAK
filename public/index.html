@@ -20,7 +20,7 @@
     <link href="style/css/style.css" rel="stylesheet">
 
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro" rel="stylesheet">
 
     <!-- D3 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -37,7 +37,7 @@
 
 </head>
 
-<body ng-class="{{ bodyClass }}">
+<body ng-class="{home: $state.includes('home')}">
 <div id="wrapper">
        <div class="overlay"></div>
 
@@ -45,38 +45,24 @@
        <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
            <ul class="nav sidebar-nav">
                <li class="sidebar-brand">
-                   <a href="#">
+                   <a class="bar" data-toggle="offcanvas"href="#">
                       Sentiment.ly
                    </a>
                </li>
                <li>
-                   <a href="#/tweet">Analyze Tweet</a>
+                   <a class="bar tab" data-toggle="offcanvas" href="#/tweet">Analyze Tweet</a>
                </li>
                <li>
-                   <a href="#/user">Analyze Twitter User</a>
+                   <a class="bar tab" data-toggle="offcanvas" href="#/user">Analyze Twitter User</a>
                </li>
                <li>
-                   <a href="#/archive">User History</a>
-               </li>
-               <!-- <li>
-                   <a href="#">Team</a>
-               </li>
-               <li class="dropdown">
-                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <span class="caret"></span></a>
-                 <ul class="dropdown-menu" role="menu">
-                   <li class="dropdown-header">Dropdown heading</li>
-                   <li><a href="#">Action</a></li>
-                   <li><a href="#">Another action</a></li>
-                   <li><a href="#">Something else here</a></li>
-                   <li><a href="#">Separated link</a></li>
-                   <li><a href="#">One more separated link</a></li>
-                 </ul>
-               </li> -->
-               <li>
-                   <a href="#/map">Heat Map</a>
+                   <a class="bar tab" data-toggle="offcanvas" href="#/archive">User History</a>
                </li>
                <li>
-                   <a href=#/signup>Log Out</a>
+                   <a class="bar tab" data-toggle="offcanvas" href="#/map">Heat Map</a>
+               </li>
+               <li>
+                   <a class="bar tab" data-toggle="offcanvas" href=#/signup>Log Out</a>
                </li>
            </ul>
        </nav>
@@ -94,7 +80,8 @@
              </button>
            </div>
            <div class="logo col-xs-10">
-             <img class="bot" src="/img/sentimently-bot-white.png">
+
+             <a href="#"><img class="bot" src="/img/sentimently-bot-white.png"></a>
            </div>
            <div class="account col-sm-1 hidden-xs">
              <button type="button" class="accountbtn btn">Account</button>
@@ -104,10 +91,10 @@
            <div class="container">
                <div class="row">
                    <div class="col-lg-8 col-lg-offset-2">
-                     <div ui-view></div>
                    </div>
                </div>
            </div>
+           <div ui-view></div>
        </div>
        <!-- /#page-content-wrapper -->
 
@@ -128,6 +115,12 @@
         trigger.click(function () {
           hamburger_cross();
         });
+        $('.bar').click(function(){
+          overlay.hide();
+          trigger.removeClass('is-open');
+          trigger.addClass('is-closed');
+          isClosed = false;
+        })
 
         function hamburger_cross() {
 
@@ -142,6 +135,7 @@
             trigger.addClass('is-open');
             isClosed = true;
           }
+
       }
 
       $('[data-toggle="offcanvas"]').click(function () {

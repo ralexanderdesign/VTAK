@@ -4,9 +4,7 @@
 body {
     position: relative;
     overflow-x: hidden;
-    // background: url(../../img/small-bot.jpg);
-    // background-size: cover;
-    // background-repeat: no-repeat;
+    font-family: $main;
 }
 body,
 html { height: 100%;}
@@ -346,6 +344,101 @@ body.home {
   background-repeat: no-repeat;
 }
 body.default {
-  background-color: $white;
   background: none;
+}
+h1.brand {
+  margin-top: 60px;
+  margin-bottom: 10px;
+  font-size: 60px;
+  // text-align: center;
+}
+.mainarch {
+  padding-top:10px;
+  margin: 20px;
+  width: 320px;
+  height: 350px;
+  // border-style: solid;
+  border-radius: 15px;
+  background-color: rgba(87,188,144, .3);
+}
+img.arch {
+  margin-bottom: 15px;
+  border-style: solid;
+  border-width: medium;
+  border-color: white;
+  box-shadow: 10px 10px 2px $marine;
+}
+a.arch {
+  font-size: 20px;
+  text-decoration: none;
+}
+h5.arch {
+  font-size: 16px;
+}
+.display {
+  padding-top:50px;
+}
+
+.centered {
+  margin-top: 20px;
+}
+.handle {
+  margin: 0 auto;
+  text-align: center;
+  margin-bottom: 50px;
+}
+.submit {
+  background-color: $marine;
+  color: white;
+  font-weight: bold;
+}
+.bar_Anger {
+  fill: #57DDEF;
+}
+
+.bar_Disgust {
+  fill: #4A5556;
+}
+
+.bar_Fear {
+  fill: #76A6FF;
+}
+
+.bar_Joy {
+  fill: #C48C8C;
+}
+
+.bar_Sadness {
+  fill: #EF57A3;
+}
+
+.bar_Analytical {
+  fill: #6A6B6E;
+}
+
+.bar_Confident {
+  fill: #DBBEB2;
+}
+
+.bar_Tentative {
+  fill: #FF8976;
+}
+
+.bar_Openness {
+  fill: #D2BEE2;
+}
+
+.bar_Conscientiousness {
+  fill: #494949;
+}
+
+.bar_Extraversion {
+  fill: #B7B6B3;
+}
+
+.bar_Agreeableness {
+  fill: #E2D4BE;
+}
+
+.bar_Range {
 }

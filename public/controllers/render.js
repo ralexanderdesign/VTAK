@@ -10,8 +10,8 @@ angular.module('sentimently.render',[])
 
       clearRender();
 
-      var outerWidth = 800;
-      var outerHeight = 400;
+      var outerWidth = 600;
+      var outerHeight = 300;
       var margin = { left: 155, top: 0, right: 0, bottom: 30 }; // I had to increase left bc some tone names were cut off
       var barPadding = 0.2;
 
@@ -154,5 +154,3 @@ angular.module('sentimently.render',[])
     }
 
   });
-
-
