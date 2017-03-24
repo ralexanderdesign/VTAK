@@ -277,14 +277,17 @@ html {
   right: 0;
   bottom: 0;
   background-color: rgba(250, 250, 250, 0.8);
-  z-index: 1; }
+  z-index: 1;
+}
 
 .logo {
   padding-top: 10px;
-  text-align: center; }
+  text-align: center;
+}
 
 .account {
-  padding-top: 20px; }
+  padding-top: 20px;
+}
 
 .accountbtn, .accountbtn:link {
   float: right;
