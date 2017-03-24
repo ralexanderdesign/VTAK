@@ -20,7 +20,7 @@
     <link href="style/css/style.css" rel="stylesheet">
 
     <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro" rel="stylesheet">
 
     <!-- D3 -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
@@ -37,7 +37,7 @@
 
 </head>
 
-<body ng-class="{{ bodyClass }}">
+<body ng-class="{home: $state.includes('home')}">
 <div id="wrapper">
        <div class="overlay"></div>
 
@@ -50,13 +50,13 @@
                    </a>
                </li>
                <li>
-                   <a href="#/tweet">Analyze Tweet</a>
+                   <a class="tab" href="#/tweet">Analyze Tweet</a>
                </li>
                <li>
-                   <a href="#/user">Analyze Twitter User</a>
+                   <a class="tab" href="#/user">Analyze Twitter User</a>
                </li>
                <li>
-                   <a href="#/archive">User History</a>
+                   <a class="tab" href="#/archive">User History</a>
                </li>
                <!-- <li>
                    <a href="#">Team</a>
@@ -73,10 +73,10 @@
                  </ul>
                </li> -->
                <li>
-                   <a href="#/map">Heat Map</a>
+                   <a class="tab" href="#/map">Heat Map</a>
                </li>
                <li>
-                   <a href=#/signup>Log Out</a>
+                   <a class="tab" href=#/signup>Log Out</a>
                </li>
            </ul>
        </nav>
@@ -94,7 +94,8 @@
              </button>
            </div>
            <div class="logo col-xs-10">
-             <img class="bot" src="/img/sentimently-bot-white.png">
+
+             <a href="#"><img class="bot" src="/img/sentimently-bot-white.png"></a>
            </div>
            <div class="account col-sm-1 hidden-xs">
              <button type="button" class="accountbtn btn">Account</button>
@@ -104,10 +105,10 @@
            <div class="container">
                <div class="row">
                    <div class="col-lg-8 col-lg-offset-2">
-                     <div ui-view></div>
                    </div>
                </div>
            </div>
+           <div ui-view></div>
        </div>
        <!-- /#page-content-wrapper -->
 

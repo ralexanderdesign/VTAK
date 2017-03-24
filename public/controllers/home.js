@@ -1,6 +1,8 @@
 angular.module('sentimently.home',[])
 
-.controller('HomeController', ['$scope', '$http', 'tone', 'render', function ($scope,$http,tone,render) {
+.controller('HomeController', ['$scope', '$http', 'tone', 'render', '$state', function ($scope,$http,tone,render,$state) {
+
+  $scope.$state = $state;
 
   $scope.averageValues = {};
   $scope.bootup = true;
