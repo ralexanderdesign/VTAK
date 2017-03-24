@@ -1,11 +1,12 @@
 var Twitter = require('twitter');
 var request = require('request');
+var env = '../../env.json';
 
 var client = new Twitter({
-	consumer_key: 'thp6zTGxCNte6HI8vlZGpNPpt',
-	consumer_secret: 'PGaLeK8eQ1Qfic7rZNuD94c8g2PLqnKPS64CqcDJ1g6xO3yBzn',
-  access_token_key: '17641294-STYshQ5JsvoGRctfF1ofy5wtds07VbSnTS3e4HKbh',
-  access_token_secret: '8X59I6iXp70SoJzAKg3Ba0FvrIOqNI8D5wytAeGNc6IAi'
+	consumer_key: env.consumer_key,
+	consumer_secret: env.consumer_secret,
+  access_token_key: env.access_token_key,
+  access_token_secret: env.access_token_secret
 });
 
 var params = {screen_name: 'danrhendrix'};
