@@ -2,7 +2,7 @@ angular.module('sentiment.ly',['sentiment.ly-tone', 'sentiment.ly-render'])
 
 .controller('sentimentController', ['$scope', '$http', 'tone', 'render', function ($scope,$http,tone,render,$state) {
 
-  $scope.$state = $state; 
+  $scope.$state = $state;
 
 
   $scope.averageValues = {};
@@ -59,9 +59,11 @@ $scope.getArchives = function() {
   .then (function(data) {
     var arrLength = data.data.length;
     $scope.archivesData = [];
-    for (var i=arrLength-1; i>arrLength-16; i--) {
-      if (data.data[i]) {
+    for (var i=arrLength-1; i>arrLength-13; i--) {
+      if (data.data[i] ) {
+        if(!$scope.archivesData.find(item => item.handle === data.data[i].handle)){
         $scope.archivesData.push(data.data[i]);
+        }
       }
     }
     $scope.archivesData.forEach(function(entry) {
