@@ -1,6 +1,6 @@
-angular.module('sentiment.ly',['sentiment.ly-tone', 'sentiment.ly-render'])
+angular.module('sentimently.home',[])
 
-.controller('sentimentController', ['$scope', '$http', 'tone', 'render', function ($scope,$http,tone,render) {
+.controller('HomeController', ['$scope', '$http', 'tone', 'render', function ($scope,$http,tone,render) {
 
   $scope.averageValues = {};
   $scope.bootup = true;

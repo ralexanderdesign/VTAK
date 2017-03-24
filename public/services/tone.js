@@ -1,4 +1,4 @@
-angular.module('sentiment.ly-tone',[])
+angular.module('sentimently-tone',[])
 
   .factory('tone', function() {
 

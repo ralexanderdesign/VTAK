@@ -1,5 +1,7 @@
-angular.module("myApp", [
-  "sentiment.ly",
+angular.module("sentimently", [
+  "sentimently.home",
+  'sentimently-tone',
+  'sentimently-render',
   "ui.router"
 ])
   .config(function($stateProvider, $urlRouterProvider){
@@ -7,7 +9,7 @@ angular.module("myApp", [
       .state('home', {
         url: '',
         templateUrl: './templates/home.html',
-        controller: 'sentimentController',
+        controller: 'HomeController',
         data: {
            bodyClass: 'home'
        }
@@ -15,7 +17,7 @@ angular.module("myApp", [
       .state('tweet', {
         url: '/tweet',
         templateUrl: './templates/tweet.html',
-        controller: 'sentimentController',
+        controller: 'HomeController',
         data: {
           bodyClass: 'default'
         }
@@ -23,7 +25,7 @@ angular.module("myApp", [
       .state('user', {
         url: '/user',
         templateUrl: './templates/user.html',
-        controller: 'sentimentController',
+        controller: 'HomeController',
         data: {
           bodyClass: 'default'
         }
@@ -31,7 +33,7 @@ angular.module("myApp", [
       .state('archive', {
         url: '/archive',
         templateUrl: './templates/archive.html',
-        controller: 'sentimentController',
+        controller: 'HomeController',
         data: {
           bodyClass: 'default'
         }

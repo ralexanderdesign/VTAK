@@ -1,4 +1,4 @@
-angular.module('sentiment.ly-render',[])
+angular.module('sentimently-render',[])
 
   .factory('render', function() {
 
