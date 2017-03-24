@@ -1,7 +1,7 @@
 angular.module("sentimently", [
   "sentimently.home",
-  'sentimently-tone',
-  'sentimently-render',
+  'sentimently.tone',
+  'sentimently.render',
   "ui.router"
 ])
   .config(function($stateProvider, $urlRouterProvider){
