@@ -344,6 +344,7 @@ a.arch {
 h5.arch {
   font-size: 16px; }
 
+<<<<<<< HEAD
 .display {
   padding-top: 20px;
   padding-bottom: 20px; }
@@ -351,6 +352,8 @@ h5.arch {
 .user {
   padding-top: 50px; }
 
+=======
+>>>>>>> style(tweet): styling of tweet panels
 .centered {
   margin-top: 20px; }
 
