@@ -376,9 +376,12 @@ h5.arch {
 
 .buttonTweet {
   margin-bottom: 20px; }
+<<<<<<< HEAD
 
 .bootup {
   padding-left: 10%; }
+=======
+>>>>>>> style(tweet): styling of tweet panels
 
 .submit {
   background-color: #57BC90;
