@@ -4,12 +4,42 @@ var twitterOptions = require('./config/twitterOptions.js');
 var twitterController = require('./controllers/twitterApiController.js');
 var watson = require('./controllers/watson.js');
 var Tweet = require('./controllers/dbController.js');
+var stream = require('express-stream');
+var TweetStream = require('./config/streamingTwitter')
+var Twitter = require('twitter');
+var env = require('../env.json');
+var request = require('request');
+var io = require('./server.js');
+
+var client = new Twitter({
+	consumer_key: env.consumer_key,
+	consumer_secret: env.consumer_secret,
+  access_token_key: env.access_token_key,
+  access_token_secret: env.access_token_secret
+});
+
 
 // Promisify API calls
 var promiseTwitter = Promise.promisify(twitterController.getRequestTwitter);
 var promiseWatson = Promise.promisify(watson.getTone);
 
 module.exports = function(app, express) {
+
+	// app.get('/api/tweets', function(req, res) {
+	// 	// TweetStream.getTweets(tweets => {
+	// 		io.on('connection', function(socket) {
+	// 			io.emit('tweet', [-97.50, 25.87]);
+	// 		});
+	// 	// })
+	// 	res.send('yo');
+
+	// });
+
+	app.get('/api/tweetOnce', function(req, res) {
+		TweetStream.getTweets(tweets => {
+			res.send(tweets);
+		})
+	})
 
 	app.post('/api/handle', function(req, res) {
 
