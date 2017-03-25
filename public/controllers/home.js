@@ -1,5 +1,5 @@
 angular.module('sentimently.home',[])
-.controller('HomeController', ['$scope', '$http', 'tone', 'render', '$state', function ($scope,$http,tone,render,$state) {
+.controller('HomeController', function ($scope, $http, $state, $window, tone, render) {
 
   $scope.$state = $state;
   $scope.averageValues = {};
@@ -56,10 +56,12 @@ $scope.getArchives = function() {
   .then (function(data) {
     var arrLength = data.data.length;
     $scope.archivesData = [];
-    for (var i=arrLength-1; i>arrLength-13; i--) {
+    for (var i=arrLength-1,l=arrLength-13; i>l; i--) {
       if (data.data[i] ) {
         if(!$scope.archivesData.find(item => item.handle === data.data[i].handle)){
-        $scope.archivesData.push(data.data[i]);
+          $scope.archivesData.push(data.data[i]);
+        } else {
+          l--;
         }
       }
     }
@@ -93,6 +95,7 @@ $scope.getSaved = function(archive) {
     $scope.bootup = false;
     $scope.showResults = true;
     render.renderData($scope.averageValues);
+    $window.scrollTo(0, 0);
   });
 };
 
@@ -122,4 +125,21 @@ $scope.sampleRequest = function() {
 $scope.getArchives();
 $scope.showArchives = true;
 
-}]);
+
+$scope.submitTweet = function() {
+  $http({
+    method: 'POST',
+    url: '/api/tweet',
+    data: {
+      tweet: $scope.savedInput || '',
+    }
+  })
+  .then(function(data) {
+    // twitter api for submitting tweet goes here: refer to public/templates/tweet.html line 30
+  })
+  .catch(function(error) {
+    console.log('twitter error: ', error);
+  })
+}
+
+});
