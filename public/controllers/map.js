@@ -3,21 +3,22 @@
 angular.module('sentimently.heat', [])
 
 .controller('HeatController', function($scope, Heat) {
-	$scope.tweets = [];
-	Heat.initializeMap();
-
-	setTimeout(function() {
-		// Heat.updateMap([-122.490402, 47.60])
-	Heat.getTweetsOnce(tweets => {
-		console.log(tweets)
-		$scope.tweets.push(tweets);
-		Heat.updateMap(tweets)		
+	var tweets = [[-74,41]];
+	var init = new Promise(function(resolve, reject) {
+	resolve(Heat.initializeMap());
 	});
+	var socket = io();
 
-
-	}, 1000)
-	// Heat.updateMap([-74,41])
-
+	init.then(function() {
+		console.log('map up')
+			socket.emit('needTweets', 'needTweets')
+			socket.on('tweet', tweet => {
+				tweets.push(tweet[1]);
+				setTimeout(function() {
+				Heat.updateMap(tweets);
+		},1000)		
+			});
+	});
 })
 
 
@@ -84,7 +85,7 @@ var initializeMap = function() {
 	  texas = [-97.50, 25.87] 
 
 	var updateMap = function(tweetStream) {
-		console.log('update')
+		console.log('update with: ', tweetStream)
 		var width = 960;
 		var height = 600;
 	  // seattle = [-122.490402, 47.60];
@@ -97,27 +98,29 @@ var initializeMap = function() {
 
 	
 
-	  var tweetsFormatted = tweetStream[0].map(tweet => tweet[1]);
+	  // var tweetsFormatted = tweetStream[0].map(tweet => tweet[1]);
 	  // console.log('formatted!!!!!!!!!! ', tweetsFormatted)
     let updateSvg = d3.select('#map svg');
-    console.log(updateSvg)
 
-	  // let tweetCircles = updateSvg.selectAll('circle').data([tweetStream])
-	  // .enter()
+	  let tweetCircles = updateSvg.selectAll('circle').data(tweetStream)
+	  .enter()
 
-	  	let tweetCircles = updateSvg.selectAll('circle').data(tweetStream.map(tweets => tweets[1]))
-	  	.enter()
+	  	// let tweetCircles = updateSvg.selectAll('circle').data(tweetStream.map(tweets => tweets[1]))
+	  	// .enter()
 	  // .data([brooklyn, seattle, texas]).enter()
 	  // .data(tweets.enter()
 	  .append('svg:circle')
-	  .attr("cx", function (d) { console.log(pointProjection(d)); return pointProjection(d)[0]; })
+	  .attr("cx", function (d) { return pointProjection(d)[0]; })
 	  .attr("cy", function (d) { return pointProjection(d)[1]; })
+	  .attr('r', '0px')
+	  .attr('fill', 'red')
+	  .transition()
 	  .attr("r", "8px")
-	  .attr("fill", "red")
+	  .duration(2500)
 	  .transition()
 	  .attr('fill', "blue")
 	  .attr('r', '0px')
-	  .duration(5000)  
+	  .duration(2500)  
 	}
 
 	return { getTweets, getTweetsOnce, updateMap, initializeMap }
