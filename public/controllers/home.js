@@ -124,4 +124,21 @@ $scope.sampleRequest = function() {
 $scope.getArchives();
 $scope.showArchives = true;
 
+
+$scope.submitTweet = function() {
+  $http({
+    method: 'POST',
+    url: '/api/tweet',
+    data: {
+      tweet: $scope.savedInput || '',
+    }
+  })
+  .then(function(data) {
+    // twitter api for submitting tweet goes here: refer to public/templates/tweet.html line 30
+  })
+  .catch(function(error) {
+    console.log('twitter error: ', error);
+  })
+}
+
 }]);
