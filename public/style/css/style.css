@@ -351,7 +351,8 @@ h5.arch {
 .user {
   padding-top: 50px; }
 
-
+.centered {
+  margin-top: 20px; }
 
 .handle {
   margin: 0 auto;
