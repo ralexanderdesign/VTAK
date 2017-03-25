@@ -370,6 +370,9 @@ h5.arch {
 .buttonTweet {
   margin-bottom: 20px; }
 
+.bootup {
+  padding-left: 10%; }
+
 .submit {
   background-color: #57BC90;
   color: white;
