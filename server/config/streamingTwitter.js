@@ -1,6 +1,6 @@
 var Twitter = require('twitter');
 var request = require('request');
-var env = '../../env.json';
+var env = require('../../env.json');
 
 var client = new Twitter({
 	consumer_key: env.consumer_key,
@@ -16,14 +16,14 @@ var params = {screen_name: 'danrhendrix'};
 //   }
 // });
 var getTweets = function(callback) {
-	// var stream = client.stream('statuses/filter' , {track: 'nyc', locations: '-122, 26, -68, 47'})
-	var stream = client.stream('statuses/sample.json')
+	var stream = client.stream('statuses/filter' , {locations: '-122, 26, -68, 47'})
+	// var stream = client.stream('statuses/sample.json')
 	var tweetStream = [];
 	var results = [];
 	stream.on('data', event => {
-		console.log(event.text)
+		// console.log(event.text)
 
-			if (event.user) {
+				if (event.user) {
 				var propertiesObject = { address: event.user.location };
 				request.get({
 					url: 'http://maps.googleapis.com/maps/api/geocode/json',
@@ -33,13 +33,31 @@ var getTweets = function(callback) {
 						var responseObj = JSON.parse(body)
 						if (responseObj.results[0]) {
 							if (tweetStream.length < 10) {
-								tweetStream.push([event.text, responseObj.results[0].geometry.location]);
+								tweetStream.push([event.text, [responseObj.results[0].geometry.location.lng, responseObj.results[0].geometry.location.lat ]]);
 							} else {
+								stream.destroy()
 								callback(tweetStream)
-								stream.destroy();
 							}
 						}
 				});
+
+			// if (event.user) {
+			// 	var propertiesObject = { address: event.user.location };
+			// 	request.get({
+			// 		url: 'http://maps.googleapis.com/maps/api/geocode/json',
+			// 		'Content-Type': 'application/json',
+			// 		qs: propertiesObject
+			// 	}, function(err, resp, body) {
+			// 			var responseObj = JSON.parse(body)
+			// 			if (responseObj.results[0]) {
+			// 				if (tweetStream.length < 10) {
+			// 					tweetStream.push([event.text, responseObj.results[0].geometry.location]);
+			// 				} else {
+			// 					callback(tweetStream)
+			// 					stream.destroy();
+			// 				}
+			// 			}
+			// 	});
 			} else {
 				console.log('no user info')
 			// console.log('destroying!')			
@@ -48,10 +66,11 @@ var getTweets = function(callback) {
 		// console.log('tweetStream!!!!!!!!!!! ', tweetStream)	
 	});
 
-	stream.on('error', err => {
-		throw err;
-	});
+	// stream.on('error', err => {
+	// 	throw err;
+	// });
 }
+
 
 
 

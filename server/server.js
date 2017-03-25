@@ -24,6 +24,8 @@ app.use(morgan('dev'));
 
 // server static files in public
 app.use(express.static(path.join(__dirname, '../public')));
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 var port = process.env.PORT || envVars.PORT || 8222;
 

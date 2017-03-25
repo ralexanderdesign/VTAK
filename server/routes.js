@@ -4,12 +4,29 @@ var twitterOptions = require('./config/twitterOptions.js');
 var twitterController = require('./controllers/twitterApiController.js');
 var watson = require('./controllers/watson.js');
 var Tweet = require('./controllers/dbController.js');
+var stream = require('express-stream');
+var TweetStream = require('./config/streamingTwitter')
+
 
 // Promisify API calls
 var promiseTwitter = Promise.promisify(twitterController.getRequestTwitter);
 var promiseWatson = Promise.promisify(watson.getTone);
 
 module.exports = function(app, express) {
+
+	app.get('/api/tweets', stream.pipe(), function(req, res) {
+		TweetStream.getTweets(tweets => {
+			console.log(tweets)
+			res.pipe(tweets)
+		})
+		// res.close()
+	});
+
+	app.get('/api/tweetOnce', function(req, res) {
+		TweetStream.getTweets(tweets => {
+			res.send(tweets);
+		})
+	})
 
 	app.post('/api/handle', function(req, res) {
 

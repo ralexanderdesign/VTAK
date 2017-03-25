@@ -2,6 +2,7 @@ angular.module("sentimently", [
   "sentimently.home",
   'sentimently.tone',
   'sentimently.render',
+  'sentimently.heat',
   "ui.router"
 ])
   .config(function($stateProvider, $urlRouterProvider){
@@ -34,6 +35,14 @@ angular.module("sentimently", [
         url: '/archive',
         templateUrl: './templates/archive.html',
         controller: 'HomeController',
+        data: {
+          bodyClass: 'default'
+        }
+      })
+      .state('map', {
+        url: '/map',
+        templateUrl: './templates/map.html',
+        controller: 'HeatController',
         data: {
           bodyClass: 'default'
         }

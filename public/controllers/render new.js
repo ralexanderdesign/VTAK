@@ -35,25 +35,30 @@ angular.module('sentimently.render',[])
         .attr("class", "y axis")
         .attr("class", "gridB");
 
-      var xScale = d3.scale.linear().range([0, innerWidth]);
-      var yScale = d3.scale.ordinal().rangeBands([0, innerHeight], barPadding);
-      var colors = d3.scale.category20();
+      var xScale = d3.scaleLinear().range([0, innerWidth]);
+      var yScale = d3.scaleOrdinal().range([0, innerHeight], barPadding);
+      var colors = d3.scaleOrdinal(d3.schemeCategory20);
+      var xAxis = d3.axisBottom(xScale)
+      var yAxis = d3.axisLeft(yScale);
+      d3.select('.axis')
+        .call(xAxis)
+        .call(yAxis);
 
-      var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-        .ticks(10)
-        // .tickFormat(d3.format("p"))
-        .tickFormat(function(d) {
-          // console.log(d);
-          if (d !== 100) {
-            return (d * 100).toString().slice(0,2) + "%";
-          } else {
-            return ("100%");
-          }
-        })
-        .outerTickSize(0)
-        // .format('f2');
-      var yAxis = d3.svg.axis().scale(yScale).orient("left")
-        .outerTickSize(0);
+      // var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+      //   .ticks(10)
+      //   // .tickFormat(d3.format("p"))
+      //   .tickFormat(function(d) {
+      //     // console.log(d);
+      //     if (d !== 100) {
+      //       return (d * 100).toString().slice(0,2) + "%";
+      //     } else {
+      //       return ("100%");
+      //     }
+      //   })
+      //   .outerTickSize(0)
+      //   // .format('f2');
+      // var yAxis = d3.svg.axis().scale(yScale).orient("left")
+      //   .outerTickSize(0);
 
       var render = function(data) {
 
@@ -80,7 +85,7 @@ angular.module('sentimently.render',[])
         //   .text("Hello");
 
         bars.enter().append("rect")
-          .attr("height", yScale.rangeBand())
+          .attr("height", 100)
           .attr("fill", function(d, i) { return colors(d[xColumn]); })
           .attr("class", function(d, i) {
             if (i <= 4) {
@@ -154,3 +159,5 @@ angular.module('sentimently.render',[])
     }
 
   });
+
+
