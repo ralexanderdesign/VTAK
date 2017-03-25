@@ -312,8 +312,9 @@ h1 {
 body.home {
   background: url(../../img/small-bot.jpg);
   background-size: cover;
-  background-repeat: no-repeat; }
-
+  background-repeat: no-repeat; 
+  background-position: center right;
+}
 body.default {
   background: none; }
 
@@ -423,3 +424,17 @@ h5.arch {
 
 .bar_Agreeableness {
   fill: #E2D4BE; }
+
+/* LOGIN FORM */
+.panel-success, #signupbox .panel-success {
+  background: rgba(255, 255, 255, .8);
+  border: 1px solid #57BC90;
+}
+.panel-success .panel-heading, #signupbox .panel-success .panel-heading {
+  background: #57BC90;
+  border-bottom: 0;
+  color: #FFF;
+}
+.btn.btn-success {
+  background: #57BC90;
+}

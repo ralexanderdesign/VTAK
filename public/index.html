@@ -1,159 +1,121 @@
 <!DOCTYPE html>
 <html ng-app="sentimently" lang="en">
-
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Sentiment.ly</title>
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, shrink-to-fit=no, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<!-- CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-    <title>Sentiment.ly</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="style/css/style.css" rel="stylesheet">
 
-    <!-- Bootstrap Core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic" rel="stylesheet" type="text/css">
+<!-- fonts -->
+<link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link href="style/css/style.css" rel="stylesheet">
+<!-- D3 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Baloo|Source+Sans+Pro|Cabin" rel="stylesheet">
+<!-- AngularJS -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
 
-    <!-- d3 -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
-    <script src="https://d3js.org/d3-geo.v1.min.js"></script>
-    <script src="https://d3js.org/d3-geo-projection.v1.min.js"></script>
-<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.7.3/d3.js"></script> -->
-<!--     <script src="https://d3js.org/d3.v4.js"></script> -->
-
-    <!-- AngularJS -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.js"></script>
-
-    <!-- Angular scripts -->
-    <script src="app.js"></script>
-    <script src="controllers/home.js"></script>
-    <script src="controllers/render.js"></script>
-    <script src="controllers/tone.js"></script>
-    <script src="controllers/map.js"></script>
-
+<!-- Angular scripts -->
+<script src="app.js"></script>
+<script src="controllers/home.js"></script>
+<script src="controllers/render.js"></script>
+<script src="controllers/tone.js"></script>
 </head>
 
 <body ng-class="{home: $state.includes('home')}">
 <div id="wrapper">
-       <div class="overlay"></div>
+  <div class="overlay"></div>
+  
+  <!-- Sidebar -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+    <ul class="nav sidebar-nav">
+      <li class="sidebar-brand"> <a class="bar" data-toggle="offcanvas" href="#"> Sentiment.ly </a> </li>
+      <li> <a class="bar tab" data-toggle="offcanvas" href="#/tweet">Analyze Tweet</a> </li>
+      <li> <a class="bar tab" data-toggle="offcanvas" href="#/user">Analyze Twitter User</a> </li>
+      <li> <a class="bar tab" data-toggle="offcanvas" href="#/archive">User History</a> </li>
+      <li> <a class="bar tab" data-toggle="offcanvas" href="#/map">Heat Map</a> </li>
+      <li> <a class="bar tab" data-toggle="offcanvas" href="#">Log Out</a> </li>
+    </ul>
+  </nav>
+  <!-- /#sidebar-wrapper --> 
+  
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="container-fluid">
+      <div class="topbar row">
+        <div class="col-xs-1">
+          <button  type="button" class="hamburger is-closed" data-toggle="offcanvas" > <span class="hamb-top"></span> <span class="hamb-middle"></span> <span class="hamb-bottom"></span> </button>
+        </div>
+        <div class="logo col-xs-10"> <a href="#"><img class="bot" src="/img/sentimently-bot-white.png"></a> </div>
+        <!-- <div class="account col-sm-1 hidden-xs"> <a href="#/signup">
+          <button type="button" class="accountbtn btn">Account</button>
+          </a> </div> -->
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2"> </div>
+      </div>
+    </div>
+    <div ui-view></div>
+  </div>
+  <!-- /#page-content-wrapper --> 
+  
+</div>
+<!-- /#wrapper --> 
 
-       <!-- Sidebar -->
-       <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
-           <ul class="nav sidebar-nav">
-               <li class="sidebar-brand">
-                   <a class="bar" data-toggle="offcanvas"href="#">
-                      Sentiment.ly
-                   </a>
-               </li>
-               <li>
-                   <a class="bar tab" data-toggle="offcanvas" href="#/tweet">Analyze Tweet</a>
-               </li>
-               <li>
-                   <a class="bar tab" data-toggle="offcanvas" href="#/user">Analyze Twitter User</a>
-               </li>
-               <li>
-                   <a class="bar tab" data-toggle="offcanvas" href="#/archive">User History</a>
-               </li>
-               <li>
-                   <a class="bar tab" data-toggle="offcanvas" href="#/map">Heat Map</a>
-               </li>
-               <li>
-                   <a class="bar tab" data-toggle="offcanvas" href=#/signup>Log Out</a>
-               </li>
-           </ul>
-       </nav>
-       <!-- /#sidebar-wrapper -->
+<!-- javascript scripts --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> 
 
-       <!-- Page Content -->
-       <div id="page-content-wrapper">
-         <div class="container-fluid">
-         <div class="topbar row">
-           <div class="col-xs-1">
-             <button  type="button" class="hamburger is-closed" data-toggle="offcanvas" >
-                 <span class="hamb-top"></span>
-                 <span class="hamb-middle"></span>
-                 <span class="hamb-bottom"></span>
-             </button>
-           </div>
-           <div class="logo col-xs-10">
+<!-- Menu Toggle Script --> 
+<script>
+  $(document).ready(function () {
+    var trigger = $('.hamburger'),
+        overlay = $('.overlay'),
+       isClosed = false;
 
-             <a href="#"><img class="bot" src="/img/sentimently-bot-white.png"></a>
-           </div>
-           <div class="account col-sm-1 hidden-xs">
-             <a href="#/signup"><button type="button" class="accountbtn btn">Account</button></a>
-           </div>
-         </div>
-       </div>
-           <div class="container">
-               <div class="row">
-                   <div class="col-lg-8 col-lg-offset-2">
-                   </div>
-               </div>
-           </div>
-           <div ui-view></div>
-       </div>
-       <!-- /#page-content-wrapper -->
+      trigger.click(function () {
+        hamburger_cross();
+      });
+      $('.bar').click(function(){
+        overlay.hide();
+        trigger.removeClass('is-open');
+        trigger.addClass('is-closed');
+        isClosed = false;
+      })
 
-   </div>
-   <!-- /#wrapper -->
-
-   <!-- javascript scripts -->
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-    <!-- Menu Toggle Script -->
-    <script>
-    $(document).ready(function () {
-      var trigger = $('.hamburger'),
-          overlay = $('.overlay'),
-         isClosed = false;
-
-        trigger.click(function () {
-          hamburger_cross();
-        });
-        $('.bar').click(function(){
+      function hamburger_cross() {
+        if (isClosed == true) {
           overlay.hide();
           trigger.removeClass('is-open');
           trigger.addClass('is-closed');
           isClosed = false;
-        })
-
-        function hamburger_cross() {
-
-          if (isClosed == true) {
-            overlay.hide();
-            trigger.removeClass('is-open');
-            trigger.addClass('is-closed');
-            isClosed = false;
-          } else {
-            overlay.show();
-            trigger.removeClass('is-closed');
-            trigger.addClass('is-open');
-            isClosed = true;
-          }
-
+        } else {
+          overlay.show();
+          trigger.removeClass('is-closed');
+          trigger.addClass('is-open');
+          isClosed = true;
+        }
       }
 
-      $('[data-toggle="offcanvas"]').click(function () {
-            $('#wrapper').toggleClass('toggled');
-      });
+    $('[data-toggle="offcanvas"]').click(function () {
+      $('#wrapper').toggleClass('toggled');
     });
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-      <script>
-        var socket = io();
-      </script>
-
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+<script>
+  var socket = io();
+</script>
 </body>
-
 </html>
