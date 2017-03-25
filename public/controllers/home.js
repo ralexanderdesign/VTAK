@@ -142,5 +142,4 @@ $scope.submitTweet = function() {
   })
 }
 
-
 });
