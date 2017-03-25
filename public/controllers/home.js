@@ -56,10 +56,12 @@ $scope.getArchives = function() {
   .then (function(data) {
     var arrLength = data.data.length;
     $scope.archivesData = [];
-    for (var i=arrLength-1; i>arrLength-13; i--) {
+    for (var i=arrLength-1,l=arrLength-13; i>l; i--) {
       if (data.data[i] ) {
         if(!$scope.archivesData.find(item => item.handle === data.data[i].handle)){
-        $scope.archivesData.push(data.data[i]);
+          $scope.archivesData.push(data.data[i]);
+        } else {
+          l--;
         }
       }
     }
